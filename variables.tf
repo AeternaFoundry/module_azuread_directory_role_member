@@ -4,11 +4,20 @@ Map of directory_role_members, attributes below
 Optional:
     - member_object_id
     - role_object_id
+    - timeouts (block):
+        - create (optional)
+        - delete (optional)
+        - read (optional)
 EOT
 
   type = map(object({
     member_object_id = optional(string)
     role_object_id   = optional(string)
+    timeouts = optional(object({
+      create = optional(string)
+      delete = optional(string)
+      read   = optional(string)
+    }))
   }))
   validation {
     condition = alltrue([
